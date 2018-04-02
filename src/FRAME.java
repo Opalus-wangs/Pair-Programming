@@ -25,7 +25,7 @@ public class FRAME extends JFrame
 					
 						public int compare(Actor c1, Actor c2)
 						{
-							if(c1.getscore()>= c2.getscore())
+							if(c1.getw()<= c2.getw())
 							{
 								return -1;
 							}
@@ -40,7 +40,7 @@ public class FRAME extends JFrame
 					
 					for(int i = 0; i< actors.size();i++)
 					{
-						out1.append(actors.get(i).getid()+"                          "+actors.get(i).getname()+"                          "+actors.get(i).getscore()+"\n");
+						out1.append(actors.get(i).getid()+"                          "+actors.get(i).getname()+"                          "+(20-actors.get(i).getw())*5+"\n");
 						
 					}
 			 win.add(out1);

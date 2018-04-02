@@ -20,6 +20,9 @@ public class Main
 				ArrayList<Actor> actors = new ArrayList<Actor>();
 				JFrame frame = new MainFrame(actors);
 				frame.setTitle("小学生四则运算");
+				/*JLabel lab1 = new JLabel("简单：不带括号的简单四则运算");
+				lab1.setBounds(100,30,200,20);
+				frame.add(lab1);*/
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.setVisible(true);
 				frame.setLocationRelativeTo(null);

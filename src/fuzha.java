@@ -28,7 +28,7 @@ import 评价系统.FormatException1;
  * @author penghui
  *
  */
-public class GradeFrame extends JFrame
+public class fuzha extends JFrame
 { 
 	int [] k1 =new int [20];
 	js jisuan =new js();
@@ -107,7 +107,7 @@ public class GradeFrame extends JFrame
 
 	
 	  
-	public GradeFrame(final JFrame win,final JPanel pan,final String name11,final String number11,final ArrayList<Actor> actors) throws IOException
+	public fuzha(final JFrame win,final JPanel pan,final String name11,final String number11,final ArrayList<Actor> actors) throws IOException
 	{ 
 	  
 	  JLabel lab1 = new JLabel("01");
@@ -229,7 +229,7 @@ public class GradeFrame extends JFrame
 	  pan.add(Time);
 	  
 	
-	  	File file = new File("D:\\www\\最终-评分系统3\\评分系统3\\result.txt");//Text文件
+	  	File file = new File("D:\\www\\最终-评分系统3\\评分系统3\\Text.txt");//Text文件
 		BufferedReader br = new BufferedReader(new FileReader(file));//构造一个BufferedReader类来读取文件
 		String s = null;
 		while((s = br.readLine())!=null)
@@ -239,8 +239,8 @@ public class GradeFrame extends JFrame
 		
 		}
 		br.close();;
-		String s1 =READ[1].toString();
-		name1.setText(s1);
+		/*String s1 =READ[1].toString();
+		name1.setText(s1);*/
 		 try {
 			 	
 				name1.setText(READ[0].toString()+"=");
@@ -347,7 +347,7 @@ public class GradeFrame extends JFrame
         	 for(int k=0;k<20;k++)
         	 {
         		k1[k]=jisuan.arithmetic(READ[k]);
-        		
+        		//System.out.println("结果"+k1[k]);
         	 }
         	 
         		win.setVisible(false);
@@ -355,7 +355,8 @@ public class GradeFrame extends JFrame
         		for(int t=0;t<20;t++)
         		{
         			if(k1[t]!=Integer.parseInt(S[t]))
-        			{      				
+        			{      			
+        				
         				kk[count]=t;
         				
 						count ++;

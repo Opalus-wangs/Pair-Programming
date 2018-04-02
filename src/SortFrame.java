@@ -23,16 +23,23 @@ public class SortFrame extends JFrame
 	private JButton sort = new JButton("排名");
 	public SortFrame(final JFrame win,final JPanel pan,final String name11,final String number11,int[] kk,final int count,final ArrayList<Actor> actors)
 	{
-		
-		
-		int w=100-count*5;
-	
+		int w;
+		if(count==0)
+		{
+			w=100;
+		}
+		else
+		{
+			w=(20-count)*5;
+		}
+		int aaa=0;
 		String ab="";
 		win.getContentPane().remove(pan);
 		setLayout(new GridLayout(3,1));
+	
 		for(int c=0;c<count;c++)
 		{	
-			ab=ab+kk[c]+".";
+			ab=ab+kk[c]+" ";
 		}
 		 JLabel lab4 = new JLabel("学生"+name11+"成绩为："+w);
 		 if(ab!=null)
@@ -54,15 +61,12 @@ public class SortFrame extends JFrame
 		 lab7.setBounds(300,30,200,20);
 		 win.add(lab4,BorderLayout.BEFORE_FIRST_LINE);
 		
-		Actor ug = new Actor(name11,number11,kk, w);
-	    actors.add(ug);
-	    	
 		 for(Actor e: actors )
 		 {
 			 out1.append(e.getid()+"                          "+ e.getname() +"                           " + w+"\n");
-			 win.add(out1);
+			  win.add(out1);
 		 }
-		 
+		
 		 picture pic =new picture(actors);
 
 		 pic.setVisible(true);
@@ -94,7 +98,7 @@ public class SortFrame extends JFrame
 		           {
 		        	 OUT= new ArrayList<SortFrame>();
 		        	 win.setVisible(false);
-		        	 JFrame win = new JFrame("选手信息");
+		        	 JFrame win = new JFrame("小学生四则运算");
 	           	     JPanel pan = new JPanel();
 		        	 new NameFrame(win,pan,actors);
 		           	 win.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
@@ -109,7 +113,7 @@ public class SortFrame extends JFrame
 		           if(event.getSource()==sort)
 		           {
 		        	   OUT= new ArrayList<SortFrame>();
-		        	   JFrame win = new JFrame("选手排名");
+		        	   JFrame win = new JFrame("小学生四则运算");
 		           	   JPanel pan = new JPanel();
 			           new FRAME(win,pan,actors);
 			           win.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);

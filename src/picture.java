@@ -12,20 +12,28 @@ public class picture extends JFormattedTextField{
 
 		int [] a=new int[20];
 		int j=0;
+		int i=0;
+		int x=0;
+		int aa=0;
 		//绘制柱形统计图
 		private Random ran;
 		public picture(ArrayList<Actor> actors)
 		{
-			super();
-			ran = new Random();
-			setName("绘制柱形图");
-			setBounds(100,80,270,210);
 			
+			super();
 			for(Actor e: actors )
 			 {
-				a[j]=e.getw();
-				j++;
+				
+					a[j]=(e.getw());
+					//System.out.println(a[x]);
+					j++;
+					
 			 }
+			ran = new Random();
+			setName("绘制柱形图");
+			setBounds(100,85,270,210);
+			
+			
 		}
 		@Override
 		public void paint(Graphics g){
@@ -45,13 +53,15 @@ public class picture extends JFormattedTextField{
 			}
 			g2.setColor(Color.RED);
 
-			for(int i=1;i<j;i++){//绘制柱形图
-				int value = a[i];
+			for(i=0;i<j;i++){//绘制柱形图
+				int value =(20-a[i])*10+5;
 				int step = (i+1)*20;//设置每隔柱形图的水平间隔为40
 				//绘制矩形
-				g2.fillRoundRect(leftMargin+step*2, Height-value, 10, value, 10, 10);
+			
+				g2.fillRoundRect(leftMargin+step*2, Height-value, 20, value, 20, 20);
 				//列出产品的编号
-				g2.drawString("C"+(i), leftMargin+step*2, Height-value);
+				g2.drawString("C"+(i+1)+"-"+(20-a[i])*5+"%", leftMargin+step*2, Height-value-5);
+			
 			}
 		}
 		

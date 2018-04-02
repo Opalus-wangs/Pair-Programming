@@ -28,13 +28,17 @@ public class js {
         String noParentheses="^[^\\(\\)]+$"; 
         String priorOperatorExp="(((\\d+(\\.\\d+)?)|(\\[\\-\\d+(\\.\\d+)?\\]))[\\*\\/]((\\d+(\\.\\d+)?)|(\\[\\-\\d+(\\.\\d+)?\\])))"; 
         String operatorExp="(((\\d+(\\.\\d+)?)|(\\[\\-\\d+(\\.\\d+)?\\]))[\\+\\-]((\\d+(\\.\\d+)?)|(\\[\\-\\d+(\\.\\d+)?\\])))"; 
-        if(expression.matches(noParentheses)){ 
+        if(expression.matches(noParentheses))
+        { 
             Pattern patt=Pattern.compile(priorOperatorExp); 
             Matcher mat=patt.matcher(expression); 
-            if(mat.find()){ 
+            if(mat.find())
+            { 
                 String tempMinExp=mat.group(); 
                 expression=expression.replaceFirst(priorOperatorExp, parseExp(tempMinExp)); 
-            }else{ 
+            }
+            else
+            { 
                 patt=Pattern.compile(operatorExp); 
                 mat=patt.matcher(expression); 
                  
@@ -43,8 +47,20 @@ public class js {
                     expression=expression.replaceFirst(operatorExp, parseExp(tempMinExp)); 
                 } 
             } 
+            //System.out.println("-返回-"+ parseExp(expression));
             return parseExp(expression); 
+       
         } 
+        
+      //计算带括号的四则运算 
+        String minParentheses="\\([^\\(\\)]+\\)"; 
+        Pattern patt=Pattern.compile(minParentheses); 
+        Matcher mat=patt.matcher(expression); 
+        if(mat.find()){ 
+            String tempMinExp=mat.group(); 
+            expression=expression.replaceFirst(minParentheses, parseExp(tempMinExp)); 
+        } 
+        
         return parseExp(expression); 
     } 
     

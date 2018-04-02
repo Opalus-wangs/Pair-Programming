@@ -21,7 +21,8 @@ public class MainFrame extends JFrame
    private static final int DEFAULT_HEIGHT = 400;
    private JButton fileMenu =  new JButton("简单");
    private JButton editMenu = new JButton("复杂");
-   private JButton helpMenu = new JButton("柱状图");
+   private JButton helpMenu = new JButton("得分情况");
+
    public MainFrame( final ArrayList<Actor> actors)
    {
 	   this.actors = actors;
@@ -51,40 +52,33 @@ public class MainFrame extends JFrame
         	  
              if(event.getSource()== editMenu)
              {
+            	 setVisible(false);
+            	 final JFrame win = new JFrame("小学生四则运算");
+            	 final JPanel pan = new JPanel();
+            	 new NameFrame2(win,pan,actors);
             	 	
-            	    JTextField name = new JTextField(10);
+            	   /* JTextField name = new JTextField(10);
             		JTextField number = new JTextField(10);
             		JButton btn = new JButton("确定");
             		
-            		final JPanel pan = new JPanel();
+            		final JPanel pan1 = new JPanel();
             		JLabel[] judge = new JLabel[10];
             		
-            		
-            		JTextField name1 = new JTextField(15);
-            		JTextField name2 = new JTextField(15);
-        		    JTextField name3 = new JTextField(15);
-        		    JTextField name4 = new JTextField(15);
-        		    JTextField name5 = new JTextField(15);
-        		    JTextField name6 = new JTextField(15);
-        		    JTextField name7 = new JTextField(15);
-        		    JTextField name8 = new JTextField(15);
-        		    JTextField name9= new JTextField(15);
-        		    JTextField name10 = new JTextField(15);
         	 
             	final String name11 = new String(name.getText());
                	final String number11 = new String(number.getText());
           
-               	final JFrame win = new JFrame("简单");
-             	final JPanel pan1 = new JPanel();
+               	final JFrame win1 = new JFrame("小学生四则运算");
+             	final JPanel pan11 = new JPanel();
              	try {
-					new GradeFrame(win,pan1,name11,number11,actors);
+					new fuzha(win,pan1,name11,number11,actors);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
              	win.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
              	win.setVisible(true);
-             	win.setLocationRelativeTo(null);
+             	win.setLocationRelativeTo(null);*/
              }
           }
        });
@@ -103,7 +97,7 @@ public class MainFrame extends JFrame
             	     JButton btn = new JButton("继续");
             	     JButton sort = new JButton("排名");
             	  
-        			 JLabel lab4 = new JLabel("选手"+"成绩为：");
+        			 JLabel lab4 = new JLabel("学生"+"成绩为：");
         			 JLabel lab5 = new JLabel("编号");
         			 JLabel lab6 = new JLabel("姓名");
         			 JLabel lab7 = new JLabel("分数");
@@ -111,7 +105,7 @@ public class MainFrame extends JFrame
         			 lab6.setBounds(200,30,200,20);
         			 lab7.setBounds(300,30,200,20);
             			 
-             	 	 final JFrame win = new JFrame("选手排名");
+             	 	 final JFrame win = new JFrame("小学生四则运算");
                  	 final JPanel pan = new JPanel();
                  
                  	 win.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
