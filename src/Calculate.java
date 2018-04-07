@@ -1,8 +1,9 @@
+//表达式计算
 import java.math.BigDecimal;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class js {
+public class Calculate {
 
 	
 	public static int arithmetic(String exp)
@@ -42,29 +43,29 @@ public class js {
                 patt=Pattern.compile(operatorExp); 
                 mat=patt.matcher(expression); 
                  
-                if(mat.find()){ 
+                if(mat.find())
+                { 
                     String tempMinExp=mat.group(); 
                     expression=expression.replaceFirst(operatorExp, parseExp(tempMinExp)); 
                 } 
             } 
-            //System.out.println("-返回-"+ parseExp(expression));
             return parseExp(expression); 
        
         } 
-        
-      //计算带括号的四则运算 
+        //计算带括号的四则运算 
         String minParentheses="\\([^\\(\\)]+\\)"; 
         Pattern patt=Pattern.compile(minParentheses); 
         Matcher mat=patt.matcher(expression); 
-        if(mat.find()){ 
+        if(mat.find())
+        { 
             String tempMinExp=mat.group(); 
             expression=expression.replaceFirst(minParentheses, parseExp(tempMinExp)); 
-        } 
-        
+        }        
         return parseExp(expression); 
     } 
     
-    public static String calculate(String exp){ 
+     public static String calculate(String exp)
+     { 
         exp=exp.replaceAll("[\\[\\]]", ""); 
         String number[]=exp.replaceFirst("(\\d)[\\+\\-\\*\\/]", "$1,").split(","); 
         BigDecimal number1=new BigDecimal(number[0]); 
@@ -72,20 +73,23 @@ public class js {
         BigDecimal result=null; 
           
         String operator=exp.replaceFirst("^.*\\d([\\+\\-\\*\\/]).+$", "$1"); 
-        if("+".equals(operator)){ 
-            result=number1.add(number2); 
-            
-        }else if("-".equals(operator)){ 
+        if("+".equals(operator))
+        { 
+            result=number1.add(number2);     
+        }
+        else if("-".equals(operator))
+        { 
             result=number1.subtract(number2); 
-        }else if("*".equals(operator)){ 
+        }
+        else if("*".equals(operator))
+        { 
             result=number1.multiply(number2); 
-        }else if("/".equals(operator)){ 
+        }
+        else if("/".equals(operator))
+        { 
             result=number1.divide(number2,2, BigDecimal.ROUND_HALF_EVEN); 
         } 
-       
-        return result!=null?result.toString():null; 
-      
-        
+       return result!=null?result.toString():null;        
     } 
 	
 }

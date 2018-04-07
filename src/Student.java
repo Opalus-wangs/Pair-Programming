@@ -1,13 +1,13 @@
 import java.util.ArrayList;
-public class Actor
+public class Student
 {
-	private ArrayList<Actor> actors = new ArrayList<Actor>();
+	private ArrayList<Student> students = new ArrayList<Student>();
 	
 	private String name;
 	private String id;
 	private int [] score;
 	private int w;
-	public Actor(String name, String id,int [] h,int w)
+	public Student(String name, String id,int [] h,int w)
 	{
 		this.name = name;
 		this.id = id;

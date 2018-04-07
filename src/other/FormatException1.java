@@ -1,4 +1,4 @@
-package ∆¿º€œµÕ≥;
+package other;
 import java.util.*;
 public class FormatException1 extends Exception
 {

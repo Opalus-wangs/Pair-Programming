@@ -1,18 +1,12 @@
-/**
- * 选手信息窗口
- * @author penghui
- *
- */
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
-
 import javax.swing.*;
-
-import 评价系统.FormatException1;
+import other.FormatException1;
+//学生信息窗口（带括号运算）
 public class NameFrame2 extends JFrame
 { 
 	private static final int DEFAULT_WIDTH = 500;
@@ -22,9 +16,9 @@ public class NameFrame2 extends JFrame
 	private JTextField number = new JTextField(10);
 	private JButton btn = new JButton("确定");
 	final JPanel pan = new JPanel();
-	public NameFrame2(final JFrame win,final JPanel pan,final ArrayList<Actor> actors)
+	public NameFrame2(final JFrame win,final JPanel pan,final ArrayList<Student> students)
 	{
-	 
+	  //记录学生编号及姓名
 	  JLabel lab1 = new JLabel("编号");
 	  JLabel lab2 = new JLabel("姓名");
 	  win.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
@@ -32,7 +26,7 @@ public class NameFrame2 extends JFrame
  	  win.setLocationRelativeTo(null); 
  	  win.setVisible(true);
 	  btn.addActionListener(new ActionListener()
-	    {
+	  {
          public void actionPerformed(ActionEvent event)
          { 
 			 try
@@ -46,7 +40,7 @@ public class NameFrame2 extends JFrame
 			  }
 			  catch(FormatException1 a)
 			  {
-				 JOptionPane.showMessageDialog(null,"请输入选手信息");
+				 JOptionPane.showMessageDialog(null,"请输入学生信息");
 			  }
 			 if(name.getText().compareTo("")!=0 && number.getText().compareTo("")!=0)
 			 {
@@ -57,7 +51,7 @@ public class NameFrame2 extends JFrame
 	               JFrame win = new JFrame("小学生四则运算");
 	          	   JPanel pan = new JPanel();
 	          	   try {
-					new fuzha(win,pan,name11,number11,actors);
+					new Complex(win,pan,name11,number11,students);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -67,8 +61,7 @@ public class NameFrame2 extends JFrame
 	               win.setLocationRelativeTo(null);
 			 }
         }
-     });
-	  
+     }); 
 	  pan.add(lab1);
 	  pan.add(number);
 	  pan.add(lab2);

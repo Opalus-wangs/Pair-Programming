@@ -21,17 +21,12 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.text.Caret;
 
-import 评价系统.FormatException1;
+import other.FormatException1;
 
-/**
- * 评委打分窗口
- * @author penghui
- *
- */
-public class GradeFrame extends JFrame
+public class Simple extends JFrame
 { 
 	int [] k1 =new int [20];
-	js jisuan =new js();
+	Calculate calculate =new Calculate();
 	int count=0;
 	int w=0;
 	private static final int DEFAULT_WIDTH = 500;
@@ -39,11 +34,11 @@ public class GradeFrame extends JFrame
 
 	
 	int [] kk =new int[20];
-	private JButton btn = new JButton("确定");
+	private JButton btn = new JButton("确定提交");
 	int i=0;
 	
 	
-	readTxt read =new readTxt();
+	Readtext read =new Readtext();
 	final JPanel pan = new JPanel();
 	JLabel[] judge = new JLabel[10];
 	 String[] READ=new String[20];
@@ -107,8 +102,11 @@ public class GradeFrame extends JFrame
 
 	
 	  
-	public GradeFrame(final JFrame win,final JPanel pan,final String name11,final String number11,final ArrayList<Actor> actors) throws IOException
+	public Simple(final JFrame win,final JPanel pan,final String name11,final String number11,final ArrayList<Student> students) throws IOException
 	{ 
+		JLabel stuname = new JLabel("学生:  "+name11+"  ");
+		JLabel stunumber = new JLabel("编号:  "+number11+"  ");
+		JLabel space = new JLabel("                                                                                         ");
 	  
 	  JLabel lab1 = new JLabel("01");
 	  JLabel lab2 = new JLabel("02");
@@ -131,6 +129,9 @@ public class GradeFrame extends JFrame
 	  JLabel lab19 = new JLabel("19");
 	  JLabel lab20 = new JLabel("20");
 	  JLabel lab21 = new JLabel("Time"); 
+	  pan.add(stuname);
+	  pan.add(stunumber);
+	  pan.add(space);
 	  pan.add(name1);
 	  pan.add(na1);
 	  pan.add(lab1);
@@ -215,7 +216,7 @@ public class GradeFrame extends JFrame
 	  win.add(pan);
 	  
 	  
-	  JButton button1 = new JButton("测试");
+	  JButton button1 = new JButton("开始计时");
 	  Dimension preferredSize = new Dimension(100,30);//设置尺寸
 	  button1.setPreferredSize(preferredSize );
 	  pan.add(button1);
@@ -229,7 +230,7 @@ public class GradeFrame extends JFrame
 	  pan.add(Time);
 	  
 	
-	  	File file = new File("D:\\www\\最终-评分系统3\\评分系统3\\result.txt");//Text文件
+	  	File file = new File("F:\\小学生四则运算\\小学生四则运算\\result.txt");//Text文件
 		BufferedReader br = new BufferedReader(new FileReader(file));//构造一个BufferedReader类来读取文件
 		String s = null;
 		while((s = br.readLine())!=null)
@@ -346,7 +347,7 @@ public class GradeFrame extends JFrame
         	 
         	 for(int k=0;k<20;k++)
         	 {
-        		k1[k]=jisuan.arithmetic(READ[k]);
+        		k1[k]=calculate.arithmetic(READ[k]);
         		
         	 }
         	 
@@ -364,12 +365,12 @@ public class GradeFrame extends JFrame
         			
         		}
         		
-        	Actor ug = new Actor(name11,number11,kk, count);
-        	actors.add(ug);
+        	Student ug = new Student(name11,number11,kk, count);
+        	students.add(ug);
             
         	final JFrame win = new JFrame("小学生四则运算");
            	final JPanel pan = new JPanel();
-           	new SortFrame(win,pan,name11,number11,kk,count,actors);
+           	new SeeFrame(win,pan,name11,number11,kk,count,students);
            	win.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
            	win.setVisible(true);
            	win.setLocationRelativeTo(null);

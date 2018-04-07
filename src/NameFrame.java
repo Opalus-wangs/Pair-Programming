@@ -12,7 +12,7 @@ import java.util.Comparator;
 
 import javax.swing.*;
 
-import 评价系统.FormatException1;
+import other.FormatException1;
 public class NameFrame extends JFrame
 { 
 	private static final int DEFAULT_WIDTH = 500;
@@ -22,7 +22,7 @@ public class NameFrame extends JFrame
 	private JTextField number = new JTextField(10);
 	private JButton btn = new JButton("确定");
 	final JPanel pan = new JPanel();
-	public NameFrame(final JFrame win,final JPanel pan,final ArrayList<Actor> actors)
+	public NameFrame(final JFrame win,final JPanel pan,final ArrayList<Student> students)
 	{
 	 
 	  JLabel lab1 = new JLabel("编号");
@@ -46,7 +46,7 @@ public class NameFrame extends JFrame
 			  }
 			  catch(FormatException1 a)
 			  {
-				 JOptionPane.showMessageDialog(null,"请输入选手信息");
+				 JOptionPane.showMessageDialog(null,"请输入学生信息");
 			  }
 			 if(name.getText().compareTo("")!=0 && number.getText().compareTo("")!=0)
 			 {
@@ -57,7 +57,7 @@ public class NameFrame extends JFrame
 	               JFrame win = new JFrame("小学生四则运算");
 	          	   JPanel pan = new JPanel();
 	          	   try {
-					new GradeFrame(win,pan,name11,number11,actors);
+					new Simple(win,pan,name11,number11,students);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

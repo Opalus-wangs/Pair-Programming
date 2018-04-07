@@ -15,7 +15,7 @@ import javax.swing.*;
 public class MainFrame extends JFrame
 {
 		
-	public ArrayList<Actor> actors ;
+	public ArrayList<Student> students ;
 	
    private static final int DEFAULT_WIDTH = 500;
    private static final int DEFAULT_HEIGHT = 400;
@@ -23,9 +23,9 @@ public class MainFrame extends JFrame
    private JButton editMenu = new JButton("复杂");
    private JButton helpMenu = new JButton("得分情况");
 
-   public MainFrame( final ArrayList<Actor> actors)
+   public MainFrame( final ArrayList<Student> students)
    {
-	   this.actors = actors;
+	   this.students = students;
 	  setLocationRelativeTo(null); 
       setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
        JMenuBar menuBar = new JMenuBar();
@@ -38,9 +38,9 @@ public class MainFrame extends JFrame
              if(event.getSource()==fileMenu)
              {
             	 setVisible(false);
-            	 final JFrame win = new JFrame("选手信息");
+            	 final JFrame win = new JFrame("学生信息");
             	 final JPanel pan = new JPanel();
-            	 new NameFrame(win,pan,actors);
+            	 new NameFrame(win,pan,students);
              }
           }
        });
@@ -55,7 +55,7 @@ public class MainFrame extends JFrame
             	 setVisible(false);
             	 final JFrame win = new JFrame("小学生四则运算");
             	 final JPanel pan = new JPanel();
-            	 new NameFrame2(win,pan,actors);
+            	 new NameFrame2(win,pan,students);
             	 	
             	   /* JTextField name = new JTextField(10);
             		JTextField number = new JTextField(10);

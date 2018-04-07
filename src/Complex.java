@@ -11,7 +11,6 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Timer;
 import java.util.TimerTask;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -20,97 +19,78 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.text.Caret;
+import other.FormatException1;
 
-import 评价系统.FormatException1;
-
-/**
- * 评委打分窗口
- * @author penghui
- *
- */
-public class fuzha extends JFrame
+//复杂表达式的窗口
+public class Complex extends JFrame
 { 
 	int [] k1 =new int [20];
-	js jisuan =new js();
+	Calculate calculate =new Calculate();
 	int count=0;
 	int w=0;
 	private static final int DEFAULT_WIDTH = 500;
 	private static final int DEFAULT_HEIGHT = 400;
-
-	
+	//存放计算答案
 	int [] kk =new int[20];
-	private JButton btn = new JButton("确定");
+	private JButton btn = new JButton("确定提交");
 	int i=0;
-	
-	
-	readTxt read =new readTxt();
+	//存放文件
+	Readtext read =new Readtext();
 	final JPanel pan = new JPanel();
 	JLabel[] judge = new JLabel[10];
-	 String[] READ=new String[20];
-	  final JTextField Time = new JTextField(10);
-
-	  JTextField name1 = new JTextField(10);
-	  JTextField name2 = new JTextField(10);
-	  
-	  JTextField name3 = new JTextField(10);
-	  JTextField name4 = new JTextField(10);
-	  
-	  JTextField name5 = new JTextField(10);
-	  JTextField name6 = new JTextField(10);
-	  JTextField name7 = new JTextField(10);
-	  JTextField name8 = new JTextField(10);
-	  JTextField name9= new JTextField(10);
-	  JTextField name10 = new JTextField(10);
-	  
-	  JTextField name111 = new JTextField(10);
-	  JTextField name12 = new JTextField(10);
-	  
-	  JTextField name13 = new JTextField(10);
-	  JTextField name14 = new JTextField(10);
-	  
-	  JTextField name15 = new JTextField(10);
-	  JTextField name16 = new JTextField(10);
-	  JTextField name17 = new JTextField(10);
-	  JTextField name18 = new JTextField(10);
-	  JTextField name19= new JTextField(10);
-	  JTextField name20 = new JTextField(10);
-	  
-	  JTextField na1 = new JTextField(5);
-	  JTextField na2 = new JTextField(5);
-	  
-	  JTextField na3 = new JTextField(5);
-	  JTextField na4 = new JTextField(5);
-	  
-	  JTextField na5 = new JTextField(5);
-	  JTextField na6 = new JTextField(5);
-	  
-	  JTextField na7 = new JTextField(5);
-	  JTextField na8 = new JTextField(5);
-	  
-	  JTextField na9= new JTextField(5);
-	  JTextField na10 = new JTextField(5);
-	  
-	  JTextField na111 = new JTextField(5);
-	  JTextField na12 = new JTextField(5);
-	  
-	  JTextField na13 = new JTextField(5);
-	  JTextField na14 = new JTextField(5);
-	  
-	  JTextField na15 = new JTextField(5);
-	  JTextField na16 = new JTextField(5);
-	  
-	  JTextField na17 = new JTextField(5);
-	  JTextField na18 = new JTextField(5);
-	  
-	  JTextField na19= new JTextField(5);
-	  JTextField na20 = new JTextField(5);
+	String[] READ=new String[20];
+	final JTextField Time = new JTextField(10);
+	JTextField name1 = new JTextField(10);//表达式TextField
+	JTextField name2 = new JTextField(10);  
+	JTextField name3 = new JTextField(10);
+	JTextField name4 = new JTextField(10);  
+	JTextField name5 = new JTextField(10);
+	JTextField name6 = new JTextField(10);
+	JTextField name7 = new JTextField(10);
+	JTextField name8 = new JTextField(10);
+	JTextField name9= new JTextField(10);
+	JTextField name10 = new JTextField(10);  
+	JTextField name111 = new JTextField(10);
+	JTextField name12 = new JTextField(10);  
+	JTextField name13 = new JTextField(10);
+	JTextField name14 = new JTextField(10);
+	JTextField name15 = new JTextField(10);
+	JTextField name16 = new JTextField(10);
+	JTextField name17 = new JTextField(10);
+	JTextField name18 = new JTextField(10);
+	JTextField name19= new JTextField(10);
+	JTextField name20 = new JTextField(10);	 
+	
+	JTextField na1 = new JTextField(5);//答案TextFiled
+	JTextField na2 = new JTextField(5);
+	JTextField na3 = new JTextField(5);
+	JTextField na4 = new JTextField(5);
+	JTextField na5 = new JTextField(5);
+	JTextField na6 = new JTextField(5); 
+	JTextField na7 = new JTextField(5);
+    JTextField na8 = new JTextField(5);
+	JTextField na9= new JTextField(5);
+	JTextField na10 = new JTextField(5);  
+	JTextField na111 = new JTextField(5);
+	JTextField na12 = new JTextField(5);  
+	JTextField na13 = new JTextField(5);
+	JTextField na14 = new JTextField(5); 
+	JTextField na15 = new JTextField(5);
+	JTextField na16 = new JTextField(5); 
+	JTextField na17 = new JTextField(5);
+	JTextField na18 = new JTextField(5);  
+	JTextField na19= new JTextField(5);
+	JTextField na20 = new JTextField(5);
 
 	
 	  
-	public fuzha(final JFrame win,final JPanel pan,final String name11,final String number11,final ArrayList<Actor> actors) throws IOException
+	public Complex(final JFrame win,final JPanel pan,final String name11,final String number11,final ArrayList<Student> students) throws IOException
 	{ 
+		JLabel stuname = new JLabel("学生:  "+name11+"  ");
+		JLabel stunumber = new JLabel("编号:  "+number11+"  ");
+		JLabel space = new JLabel("                                                                                         ");
 	  
-	  JLabel lab1 = new JLabel("01");
+	  JLabel lab1 = new JLabel("01");//题号
 	  JLabel lab2 = new JLabel("02");
 	  JLabel lab3 = new JLabel("03");
 	  JLabel lab4 = new JLabel("04");
@@ -131,6 +111,9 @@ public class fuzha extends JFrame
 	  JLabel lab19 = new JLabel("19");
 	  JLabel lab20 = new JLabel("20");
 	  JLabel lab21 = new JLabel("Time"); 
+	  pan.add(stuname);
+	  pan.add(stunumber);
+	  pan.add(space);
 	  pan.add(name1);
 	  pan.add(na1);
 	  pan.add(lab1);
@@ -214,30 +197,29 @@ public class fuzha extends JFrame
 	  
 	  win.add(pan);
 	  
-	  
-	  JButton button1 = new JButton("测试");
+	  //计时按钮
+	  JButton button1 = new JButton("开始计时");
 	  Dimension preferredSize = new Dimension(100,30);//设置尺寸
 	  button1.setPreferredSize(preferredSize );
 	  pan.add(button1);
-	  pan.setBounds(0,0, 400, 300);
+	  pan.setBounds(0,0,400,300);
 	  pan.setVisible(true); 
-	  
+	  //提交按钮
 	  btn.setPreferredSize(preferredSize );
 	  pan.setBounds(0,0, 800, 300);
 	  pan.add(btn);
 	  pan.add(lab21);
 	  pan.add(Time);
 	  
-	
-	  	File file = new File("D:\\www\\最终-评分系统3\\评分系统3\\Text.txt");//Text文件
-		BufferedReader br = new BufferedReader(new FileReader(file));//构造一个BufferedReader类来读取文件
-		String s = null;
-		while((s = br.readLine())!=null)
-		{
-			READ[i]=s;
-			i++;
-		
-		}
+	  //文件路径
+	  File file = new File("F:\\小学生四则运算\\小学生四则运算\\Text.txt");//Text文件
+	  BufferedReader br = new BufferedReader(new FileReader(file));//构造一个BufferedReader类来读取文件
+	  String s = null;
+	  while((s = br.readLine())!=null)
+	  {
+		  READ[i]=s;
+		  i++;
+	  }
 		br.close();;
 		/*String s1 =READ[1].toString();
 		name1.setText(s1);*/
@@ -252,8 +234,7 @@ public class fuzha extends JFrame
 				name7.setText(READ[6].toString()+"=");
 				name8.setText(READ[7].toString()+"=");
 				name9.setText(READ[8].toString()+"=");
-				name10.setText(READ[9].toString()+"=");
-				
+				name10.setText(READ[9].toString()+"=");	
 				name111.setText(READ[10].toString()+"=");
 				name12.setText(READ[11].toString()+"=");
 				name13.setText(READ[12].toString()+"=");
@@ -263,10 +244,7 @@ public class fuzha extends JFrame
 				name17.setText(READ[16].toString()+"=");
 				name18.setText(READ[17].toString()+"=");
 				name19.setText(READ[18].toString()+"=");
-				name20.setText(READ[19].toString()+"=");
-				
-		 
-		 
+				name20.setText(READ[19].toString()+"=");	 
 		 } catch(NullPointerException e) {
 	           System.out.println("读入文件有错！");
 	           
@@ -296,7 +274,7 @@ public class fuzha extends JFrame
 	     });
 		    
 		
-		
+		 
 	  btn.addActionListener(new ActionListener()
 	    {
 		  String [] S =new String[20];
@@ -304,10 +282,8 @@ public class fuzha extends JFrame
 		public void actionPerformed(ActionEvent event)
         {
         	try
-			  {
-        			
-        		
-				    S[0] = na1.getText();
+        	{
+				    S[0] = na1.getText();//得到答案
 				    S[1] = na2.getText();
 				    S[2] = na3.getText();
 				    S[3] = na4.getText();
@@ -327,7 +303,7 @@ public class fuzha extends JFrame
 				    S[17] = na18.getText();
 				    S[18] = na19.getText();
 				    S[19] = na20.getText();
-				    	
+	               //判空    	
 					if(S[0].equals("")||S[1].equals("")||S[2].equals("")||S[3].equals("")||S[4].equals("")||S[5].equals("")||S[6].equals("")||S[7].equals("")||S[8].equals("")||S[9].equals("")
 						||S[10].equals("")||S[11].equals("")||S[12].equals("")||S[13].equals("")||S[14].equals("")||S[15].equals("")||S[16].equals("")||S[17].equals("")||S[18].equals("")||S[19].equals("")	
 							
@@ -343,34 +319,29 @@ public class fuzha extends JFrame
 			  }
          
             
-        	 
+        	 //将算式的计算结果保存到数组k1[]
         	 for(int k=0;k<20;k++)
         	 {
-        		k1[k]=jisuan.arithmetic(READ[k]);
-        		//System.out.println("结果"+k1[k]);
+        		k1[k]=calculate.arithmetic(READ[k]);
         	 }
-        	 
-        		win.setVisible(false);
+        	 win.setVisible(false);
         		
-        		for(int t=0;t<20;t++)
-        		{
-        			if(k1[t]!=Integer.parseInt(S[t]))
-        			{      			
-        				
-        				kk[count]=t;
-        				
-						count ++;
-        			}
-        			
-        			
-        		}
+        	for(int t=0;t<20;t++)
+        	{
+        		//记录错误题数以及错误题号
+        		if(k1[t]!=Integer.parseInt(S[t]))
+        		{      			
+        			kk[count]=t;
+					count ++;
+        		}		
+        	}
         		
-        	Actor ug = new Actor(name11,number11,kk, count);
-        	actors.add(ug);
+        	Student ug = new Student(name11,number11,kk, count);
+        	students.add(ug);
             
         	final JFrame win = new JFrame("小学生四则运算");
            	final JPanel pan = new JPanel();
-           	new SortFrame(win,pan,name11,number11,kk,count,actors);
+           	new SeeFrame(win,pan,name11,number11,kk,count,students);
            	win.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
            	win.setVisible(true);
            	win.setLocationRelativeTo(null);

@@ -11,17 +11,17 @@ import java.util.Random;
 
 import javax.swing.*;
 
-public class SortFrame extends JFrame
+public class SeeFrame extends JFrame
 { 
 	private Random ran;
 	private static final int DEFAULT_WIDTH = 500;
 	private static final int DEFAULT_HEIGHT = 400; 
-	protected ArrayList<SortFrame> OUT ;
+	protected ArrayList<SeeFrame> OUT ;
 	private JTextArea out1 = new JTextArea();
 	private JLabel pan1 = new JLabel();
 	private JButton btn = new JButton("继续");
-	private JButton sort = new JButton("排名");
-	public SortFrame(final JFrame win,final JPanel pan,final String name11,final String number11,int[] kk,final int count,final ArrayList<Actor> actors)
+	private JButton sort = new JButton("查看");
+	public SeeFrame(final JFrame win,final JPanel pan,final String name11,final String number11,int[] kk,final int count,final ArrayList<Student> students)
 	{
 		int w;
 		if(count==0)
@@ -49,25 +49,25 @@ public class SortFrame extends JFrame
 			 win.add(lab41);
 		}
 		 
-		 JLabel lab5 = new JLabel("编号");
-		 JLabel lab6 = new JLabel("姓名");
-		 JLabel lab7 = new JLabel("分数");
+		 JLabel lab5 = new JLabel("成绩分布柱状图");
+		/* JLabel lab6 = new JLabel("姓名");
+		 JLabel lab7 = new JLabel("分数");*/
 		 
 		 
 		
 		 
-		 lab5.setBounds(100,30,200,20);
-		 lab6.setBounds(200,30,200,20);
-		 lab7.setBounds(300,30,200,20);
+		 lab5.setBounds(195,30,200,20);
+		 /*lab6.setBounds(200,30,200,20);
+		 lab7.setBounds(300,30,200,20);*/
 		 win.add(lab4,BorderLayout.BEFORE_FIRST_LINE);
 		
-		 for(Actor e: actors )
+		/* for(Actor e: actors )
 		 {
 			 out1.append(e.getid()+"                          "+ e.getname() +"                           " + w+"\n");
 			  win.add(out1);
-		 }
+		 }*/
 		
-		 picture pic =new picture(actors);
+		 Picture pic =new Picture(students);
 
 		 pic.setVisible(true);
 		 win.add(pic);
@@ -80,8 +80,8 @@ public class SortFrame extends JFrame
 		 pan.add(btn);
 		 pan.add(sort);
 		 win.add(lab5);
-		 win.add(lab6);
-		 win.add(lab7);
+		 /*win.add(lab6);
+		 win.add(lab7);*/
 		 win.add(pan);
 		 win.add(pan,BorderLayout.SOUTH);
 		 
@@ -96,11 +96,11 @@ public class SortFrame extends JFrame
 		        {
 		           if(event.getSource()==btn)
 		           {
-		        	 OUT= new ArrayList<SortFrame>();
+		        	 OUT= new ArrayList<SeeFrame>();
 		        	 win.setVisible(false);
 		        	 JFrame win = new JFrame("小学生四则运算");
 	           	     JPanel pan = new JPanel();
-		        	 new NameFrame(win,pan,actors);
+		        	 new NameFrame(win,pan,students);
 		           	 win.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 		           	 win.setVisible(true);
 		           }
@@ -112,10 +112,10 @@ public class SortFrame extends JFrame
 		        {
 		           if(event.getSource()==sort)
 		           {
-		        	   OUT= new ArrayList<SortFrame>();
+		        	   OUT= new ArrayList<SeeFrame>();
 		        	   JFrame win = new JFrame("小学生四则运算");
 		           	   JPanel pan = new JPanel();
-			           new FRAME(win,pan,actors);
+			           new FRAME(win,pan,students);
 			           win.setSize(DEFAULT_WIDTH, DEFAULT_HEIGHT);
 			           win.setVisible(true);
 			           win.setLocationRelativeTo(null);

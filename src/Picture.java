@@ -3,13 +3,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
 import java.util.Random;
-
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
-public class picture extends JFormattedTextField{
-
+//绘制柱状图
+public class Picture extends JFormattedTextField
+{
 		int [] a=new int[20];
 		int j=0;
 		int i=0;
@@ -17,23 +17,17 @@ public class picture extends JFormattedTextField{
 		int aa=0;
 		//绘制柱形统计图
 		private Random ran;
-		public picture(ArrayList<Actor> actors)
-		{
-			
+		public Picture(ArrayList<Student> students)
+		{	
 			super();
-			for(Actor e: actors )
+			for(Student e: students )
 			 {
-				
 					a[j]=(e.getw());
-					//System.out.println(a[x]);
-					j++;
-					
+					j++;	
 			 }
 			ran = new Random();
 			setName("绘制柱形图");
 			setBounds(100,85,270,210);
-			
-			
 		}
 		@Override
 		public void paint(Graphics g){
@@ -63,10 +57,8 @@ public class picture extends JFormattedTextField{
 				g2.drawString("C"+(i+1)+"-"+(20-a[i])*5+"%", leftMargin+step*2, Height-value-5);
 			
 			}
-		}
-		
-			
-		}
+		}		
+}
 	
 
 
